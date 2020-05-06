@@ -1,0 +1,82 @@
+<div class="container">
+<div class="row pt-5">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let i of item">
+      <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+         
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <img style=" height: 200px; width:100%" class="img" src="{{i.imageurl}}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <span>id :{{i.id}}</span>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <span>name :{{i.name}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <span>price :{{i.price|currency:'Rs.'}}</span>
+              </div>
+            </div>
+            
+          </div>
+     
+        
+    <div class="wrapper"> 
+    <button class="btn btn-danger" (click)="deleteFromCart(i)">Delete</button> 
+    </div>       
+    </div>
+      </div>
+    </div>
+    <div class="col-25">
+      <div class="container">
+        <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b></b></span></h4>
+        <!-- <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+        <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+        <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+        <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+        <hr>
+        <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
+        <p *ngFor="let i of item">{{i.name}} <span class="price">{{i.price}}</span></p>
+        <p>Total price <span class="price" style="color:black">{{total()}}</span></p>
+        <div class="card-body">
+          <form #discountcode="ngForm" (ngSubmit)="calculateDiscount(discountcode)" novalidate>
+              <div class="form-group"> <label>Have coupon?</label>
+                  <div class="input-group"> <input class="form-control coupon" name="code"  ngModel required #code="ngModel" placeholder="Coupon code"> <span class="input-group-append"><button (click)="calculateDiscount(discountcode)" class="btn btn-primary btn-apply coupon">Apply</button> </span> </div>
+                       <p>discount <span class="price" style="color:black">{{calculateDiscount(discountcode)}}</span></p> 
+              </div>
+          </form>
+      </div>
+        <p>Total price <span class="price" style="color:black">{{distotal()}}</span></p> 
+        
+      
+      
+      </div>
+    </div>
+  </div>
+  <!-- <div>
+  <ul>
+    <li *ngFor="let i of item">{{i.name}} <span>{{i.price}}</span></li>
+      <li>Total price <span>{{total()}}</span></li> 
+     
+  </ul>
+  
+</div> -->
+
+
+ <a class="nav-link" routerLink="/buynow"><button  style="height:30%; margin: 2% 0 6% 13%; align-self: flex-start;" (click)="order()" class="btn btn-success">Buy now</button></a>
+
+
+
+
+</div>
+
+
